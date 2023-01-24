@@ -1,0 +1,120 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+/* vista mobile */
+
+ .header__container {
+    background-color: black;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: white !important;
+}
+
+.menu__title {
+    font-size: 1.8rem;
+    color: white;
+}
+.menu__title:hover {
+    color: white;
+}
+.nav-link {
+    background-color: black;
+    color: white !important;
+}
+.btn__hamburguesa {
+    color: white !important;
+    font-size: 12px !important;
+    background-color: white;
+}
+.navbar-toggler-icon {
+    color: white !important;
+}
+.cantidadCarrito {
+    border-radius: 30%;
+    background-color: white;
+    color: black;
+    padding: 3px;
+    margin-left: 4px;
+    font-size: 14px;
+
+}
+
+/* MAIN */
+
+.main__container {
+    background-image: url(../img/imagen\ restaurant\ oscura.jpg);
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    
+}
+.main__text {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.main__text h2 {
+    font-size: 3rem;
+    text-decoration: solid;
+    font-weight:700;
+    
+}
+.btn__menu {
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    color: black !important;
+    background-color: white;
+    font-weight:700;
+} 
+
+/* PAGE MENÚ */
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.modal-container {
+    display: flex;
+    gap: 1rem;
+}
+.img-carrito {
+    width: 20vw;
+    padding: 1rem;
+}
+
+/* Pop-up btn compra */
+
+.title-class {
+    color: white !important;
+}
+.text-class {
+    color: white;
+}
+
+/* Vista Desktop */
+
+@media (min-width: 712px) {
+    .main__container {
+        background-position: top;
+        background-size: cover;
+        height: 150vh;
+    }
+    .main__text {
+        height: 100vh;
+    }
+    .btn__menu {
+        cursor: pointer;
+    }
+}
