@@ -1,7 +1,10 @@
-
-
-
-
+let carrito = []
+const contenedor = document.getElementById('cardsContainer');
+const vaciarCarrito = document.querySelector('#vaciarCarrito');
+const sumaDePrecio = document.getElementById('precioTotal');
+const terminarCompra = document.querySelector('#terminarCompra');
+const agregarCantidadIcono = document.querySelector('#cantidadCarrito');
+const arrayJson = fetchAPI()
 
 //HTML DE LAS CARDS
 
