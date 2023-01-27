@@ -8,23 +8,27 @@ const agregarCantidadIcono = document.querySelector('#cantidadCarrito');
 
 //Fetch recibe (url, options)
 
-function arrayJson () {
-  fetch('../data/data.json')
-    .then(res => res.json())
-    .then(data => {
-      console.log(data)
-      stockProductos = data
-      renderProductos(stockProductos)
-    })
-}
-arrayJson()
-
-// async function fetchAPI() {
-//   const response = await fetch ('../data/data.json')
-//   const datos = await response.json();
-//   renderProductos(datos)
+// function arrayJson () {
+//   fetch('../data/data.json')
+//     .then(res => res.json())
+//     .then(data => {
+//       console.log(data)
+//       stockProductos = data
+//       renderProductos(stockProductos)
+//     })
 // }
-// fetchAPI()
+// arrayJson()
+
+//HOLA PROFE, PUDE RESOLVER LA CARGA DEL FETCH IGUALANDO EL NOMBRE QUE LE HABIA PUESTO AL ARRAY DE OBJETOS = DATA Y ENTONCES LO USÉ COMO PARAMETRO! GRACIAS!
+
+//LLAMADO DEL ARRAY JSON CON FETCH
+async function fetchAPI() {
+  const response = await fetch ('../data/data.json')
+  const data = await response.json();
+  stockProductos = data
+  renderProductos(stockProductos)
+}
+fetchAPI()
 
 //HTML DE LAS CARDS
 //MOSTRAR CARDS
@@ -47,44 +51,7 @@ const renderProductos = (producto) => {
   }
 }
 
-// pedirProducto().then((response) => {
-//   productos = response;
-//   renderProductos(productos)
-// });
-
-
-// stockProductos.forEach((producto) => {
-//   const { id, nombre, cantidad, descripcion, precio, img, } = producto
-//   contenedor.innerHTML += `
-//       <div class="card" style="width: 18rem;">
-//         <img src="${img}" class="card-img-top" alt="...">
-//         <div class="card-body">
-//           <h5 class="card-title">${nombre}</h5>
-//           <p class="card-text">$${precio}</p>
-//           <p class="card-text">Descripcion: ${descripcion}</p>
-//           <p class="card-text">Cantidad: ${cantidad}</p>
-//           <a onclick="agregarProducto(${id})" class="btn btn-primary botonP">Agregar a carrito</a>
-//         </div>
-//       </div>
-//     `
-// })
-
-function buscarProducto(arr, filtro) {
-  const encontrado = arr.find((el) => {
-    return el.nombre.includes(filtro);
-  });
-  return encontrado;
-}
-
-function agregarProducto(id) {
-  
-  mostrarCarrito();
-  carritoContador();
-}
-
-
 //FUNCION PARA SUMAR PRODUCTOS AL CARRITO
-
 function agregarProducto(id) {
   const cantidadProducto = carrito.some((producto) => producto.id === id)
   if (cantidadProducto) {
@@ -103,8 +70,6 @@ function agregarProducto(id) {
 
 
 //FUNCION PARA MOSTRAR LOS PRODUCTOS EN EL CARRITO
-
-// Original
 function mostrarCarrito() {
   const modalBody = document.querySelector('.modal .modal-body')
   modalBody.innerHTML = ''
@@ -149,7 +114,6 @@ contenedor.addEventListener('click', () => {
 })
 
 //FUNCION PARA BOTON DE ELIMINAR PRODUCTO EN CARRITO
-
 function eliminarProducto(id) {
   const platoId = id
   carrito = carrito.filter((platos) => platos.id != platoId)
@@ -158,7 +122,6 @@ function eliminarProducto(id) {
 }
 
 //FUNCION PARA BOTON DE VACIAR CARRITO
-
 vaciarCarrito.addEventListener('click', () => {
   carrito.length = []
   mostrarCarrito();
@@ -185,14 +148,12 @@ terminarCompra.addEventListener('click', () => {
 })
 
 // AGREGAR NUMERO DE CANTIDADES AL ICONO CARRITO EN NAVBAR
-
 const carritoContador = () => {
   agregarCantidadIcono.innerHTML = carrito.length;
 }
 
 
-//FINALIZAR COMPRA
-
+//FINALIZAR COMPRA (PROBANDO)
 function finalizarCompra() {
   carrito.forEach((producto) => {
     const listaCompra = document.querySelector('#lista-compra tbody');
