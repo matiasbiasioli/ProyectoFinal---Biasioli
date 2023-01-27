@@ -1,22 +1,33 @@
 let carrito = []
+let stockProductos = []
 const contenedor = document.getElementById('cardsContainer');
 const vaciarCarrito = document.querySelector('#vaciarCarrito');
 const sumaDePrecio = document.getElementById('precioTotal');
 const terminarCompra = document.querySelector('#terminarCompra');
 const agregarCantidadIcono = document.querySelector('#cantidadCarrito');
-const arrayJson = fetchAPI()
+
+//Fetch recibe (url, options)
+
+function arrayJson () {
+  fetch('../data/data.json')
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+      stockProductos = data
+      renderProductos(stockProductos)
+    })
+}
+arrayJson()
+
+// async function fetchAPI() {
+//   const response = await fetch ('../data/data.json')
+//   const datos = await response.json();
+//   renderProductos(datos)
+// }
+// fetchAPI()
 
 //HTML DE LAS CARDS
-
-// const pedirProducto = () => {
-//   return new Promise((resolve, reject) => {
-//     resolve(stockProductos)
-//   })
-// }
-
-// let productos = []
-
-//Mostrar Cards 
+//MOSTRAR CARDS
 const renderProductos = (producto) => {
   contenedor.innerHTML = ''
   for(const item of producto) {
@@ -210,24 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
   carritoContador();
 })
 
-//Fetch recibe (url, options)
 
-// function arrayJson () {
-//   fetch('../data/data.json')
-//     .then(res => res.json())
-//     .then(datos => {
-//       console.log(datos)
-//       renderProductos(datos)
-//     })
-// }
-// arrayJson()
-
-async function fetchAPI() {
-  const response = await fetch ('../data/data.json')
-  const datos = await response.json();
-  renderProductos(datos)
-}
-fetchAPI()
 
 
 

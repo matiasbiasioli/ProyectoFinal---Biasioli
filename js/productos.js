@@ -1,67 +1,67 @@
-const stockProductos = [
-  {
-    id: 1,
-    nombre: "Brusquetas de Salmón",
-    cantidad: 1,
-    descripcion: "Pan tostado montado con salmón fresco",
-    precio: 1200,
-    img: "../img/salmon.jpg"
-  },
-  {
-    id: 2,
-    nombre: "Empanadas primavera",
-    cantidad: 1,
-    descripcion: "Porcion de empanadas con salsa agridulce",
-    precio: 1000,
-    img: "../img/primavera.jpg"
-  },
-  {
-    id: 3,
-    nombre: "Ensalada Asiatica",
-    cantidad: 1,
-    descripcion: "Ensalada de hojas frescas, huevo y remolacha",
-    precio: 1800,
-    img: "../img/ensalada.jpg"
-  },
-  {
-    id: 4,
-    nombre: "Pasta de camarones",
-    cantidad: 1,
-    descripcion: "Tallarines con Camarones",
-    precio: 2200,
-    img: "../img/camarones.jpg"
-  },
-  {
-    id: 5,
-    nombre: "Sushi de salmón",
-    cantidad: 1,
-    descripcion: "Porcion chica de sushi",
-    precio: 4500,
-    img: "../img/sushi1.jpg"
-  },
-  {
-    id: 6,
-    nombre: "Sushi con niguiris",
-    cantidad: 1,
-    descripcion: "Rolls y niguiris",
-    precio: 4300,
-    img: "../img/sushi2.jpg"
-  },
-  {
-    id: 7,
-    nombre: "Sushi big size",
-    cantidad: 1,
-    descripcion: "Porcion grande de rolls",
-    precio: 6200,
-    img: "../img/sushi3.jpg"
-  },
-  {
-    id: 8,
-    nombre: "Creme Brulee",
-    cantidad: 1,
-    descripcion: "Postre tipo flan",
-    precio: 1500,
-    img: "../img/brulee.jpg"
-  }
-]
+// const stockProductos = [
+//   {
+//     id: 1,
+//     nombre: "Brusquetas de Salmón",
+//     cantidad: 1,
+//     descripcion: "Pan tostado montado con salmón fresco",
+//     precio: 1200,
+//     img: "../img/salmon.jpg"
+//   },
+//   {
+//     id: 2,
+//     nombre: "Empanadas primavera",
+//     cantidad: 1,
+//     descripcion: "Porcion de empanadas con salsa agridulce",
+//     precio: 1000,
+//     img: "../img/primavera.jpg"
+//   },
+//   {
+//     id: 3,
+//     nombre: "Ensalada Asiatica",
+//     cantidad: 1,
+//     descripcion: "Ensalada de hojas frescas, huevo y remolacha",
+//     precio: 1800,
+//     img: "../img/ensalada.jpg"
+//   },
+//   {
+//     id: 4,
+//     nombre: "Pasta de camarones",
+//     cantidad: 1,
+//     descripcion: "Tallarines con Camarones",
+//     precio: 2200,
+//     img: "../img/camarones.jpg"
+//   },
+//   {
+//     id: 5,
+//     nombre: "Sushi de salmón",
+//     cantidad: 1,
+//     descripcion: "Porcion chica de sushi",
+//     precio: 4500,
+//     img: "../img/sushi1.jpg"
+//   },
+//   {
+//     id: 6,
+//     nombre: "Sushi con niguiris",
+//     cantidad: 1,
+//     descripcion: "Rolls y niguiris",
+//     precio: 4300,
+//     img: "../img/sushi2.jpg"
+//   },
+//   {
+//     id: 7,
+//     nombre: "Sushi big size",
+//     cantidad: 1,
+//     descripcion: "Porcion grande de rolls",
+//     precio: 6200,
+//     img: "../img/sushi3.jpg"
+//   },
+//   {
+//     id: 8,
+//     nombre: "Creme Brulee",
+//     cantidad: 1,
+//     descripcion: "Postre tipo flan",
+//     precio: 1500,
+//     img: "../img/brulee.jpg"
+//   }
+// ]
   
