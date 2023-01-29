@@ -1,3 +1,7 @@
+//HOLA PROFE, PUDE RESOLVER LA CARGA DEL FETCH IGUALANDO en la funcion fetchAPI EL NOMBRE QUE LE HABIA PUESTO AL ARRAY = DATA Y ENTONCES USÉ el stockProductos COMO PARAMETRO! GRACIAS!
+//Como te digo en el ultimo mensaje, lo que no estoy pudiendo lograr todavía es cargar en el compra.html los productos seleccionados en la tabla del formulario para finalizarCompra. 
+//Tengo alguna forma desde donde estoy trabado? u otra?
+
 let carrito = []
 let stockProductos = []
 const contenedor = document.getElementById('cardsContainer');
@@ -7,7 +11,6 @@ const terminarCompra = document.querySelector('#terminarCompra');
 const agregarCantidadIcono = document.querySelector('#cantidadCarrito');
 
 //Fetch recibe (url, options)
-
 // function arrayJson () {
 //   fetch('../data/data.json')
 //     .then(res => res.json())
@@ -19,11 +22,11 @@ const agregarCantidadIcono = document.querySelector('#cantidadCarrito');
 // }
 // arrayJson()
 
-//HOLA PROFE, PUDE RESOLVER LA CARGA DEL FETCH IGUALANDO EL NOMBRE QUE LE HABIA PUESTO AL ARRAY DE OBJETOS = DATA Y ENTONCES LO USÉ COMO PARAMETRO! GRACIAS!
+
 
 //LLAMADO DEL ARRAY JSON CON FETCH
 async function fetchAPI() {
-  const response = await fetch ('../data/data.json')
+  const response = await fetch('../data/data.json')
   const data = await response.json();
   stockProductos = data
   renderProductos(stockProductos)
@@ -34,23 +37,22 @@ fetchAPI()
 //MOSTRAR CARDS
 const renderProductos = (producto) => {
   contenedor.innerHTML = ''
-  for(const item of producto) {
+  for (const item of producto) {
     const { id, nombre, cantidad, descripcion, precio, img, } = item
     contenedor.innerHTML += `
-        <div class="card" style="width: 18rem;">
-          <img src="${img}" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">${nombre}</h5>
-            <p class="card-text">$${precio}</p>
-            <p class="card-text">Descripcion: ${descripcion}</p>
-            <p class="card-text">Cantidad: ${cantidad}</p>
-            <a onclick="agregarProducto(${id})" id="btnAgregar" class="btn btn-primary botonP">Agregar a carrito</a>
-          </div>
-        </div>
-      `;
+            <div class="card" style="width: 18rem;">
+              <img src="${img}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">${nombre}</h5>
+                <p class="card-text">$${precio}</p>
+                <p class="card-text">Descripcion: ${descripcion}</p>
+                <p class="card-text">Cantidad: ${cantidad}</p>
+                <a onclick="agregarProducto(${id})" id="btnAgregar" class="btn btn-primary botonP">Agregar a carrito</a>
+              </div>
+            </div>
+          `;
   }
 }
-
 //FUNCION PARA SUMAR PRODUCTOS AL CARRITO
 function agregarProducto(id) {
   const cantidadProducto = carrito.some((producto) => producto.id === id)
@@ -68,7 +70,6 @@ function agregarProducto(id) {
   carritoContador();
 }
 
-
 //FUNCION PARA MOSTRAR LOS PRODUCTOS EN EL CARRITO
 function mostrarCarrito() {
   const modalBody = document.querySelector('.modal .modal-body')
@@ -76,17 +77,17 @@ function mostrarCarrito() {
   carrito.forEach((producto) => {
     const { id, nombre, precio, cantidad, img } = producto
     modalBody.innerHTML += `
-    <div class= "modal-container">
-      <div>
-    <img class="img-fluid img-carrito" src="${img}">
+      <div class= "modal-container">
+        <div>
+      <img class="img-fluid img-carrito" src="${img}">
+        </div>
+      <div class="mt-1">
+        <p>Producto: ${nombre}</p>
+        <p>Precio: $${precio}</p>
+        <p>Cantidad: ${cantidad}</p>
+        <button onclick="eliminarProducto(${id})" class="btn btn-danger">Eliminar producto</button>
       </div>
-    <div class="mt-1">
-      <p>Producto: ${nombre}</p>
-      <p>Precio: $${precio}</p>
-      <p>Cantidad: ${cantidad}</p>
-      <button onclick="eliminarProducto(${id})" class="btn btn-danger">Eliminar producto</button>
-    </div>
-    </div>`
+      </div>`
   })
   if (carrito.length === 0) {
     modalBody.innerHTML = `<p>Tu carrito está vacio</p>`
@@ -104,14 +105,14 @@ contenedor.addEventListener('click', () => {
     html: '<p class= text-class> Muy bien!</p>',
     confirmButtonText: 'OK',
     background: '#000',
-    timer: 2000,
+    timer: 800,
     icon: 'success',
     customClass: {
       title: 'title-class',
     }
-  }
-  )
+  })
 })
+
 
 //FUNCION PARA BOTON DE ELIMINAR PRODUCTO EN CARRITO
 function eliminarProducto(id) {
@@ -129,6 +130,7 @@ vaciarCarrito.addEventListener('click', () => {
 })
 
 //POP UP PARA TERMINAR COMPRAR
+
 terminarCompra.addEventListener('click', () => {
   if (carrito.length === 0) {
     Swal.fire({
@@ -140,35 +142,17 @@ terminarCompra.addEventListener('click', () => {
       customClass: {
         title: 'title-class',
       }
-    }
-    )
+    })
   } else {
     location.href = "compra.html"
+    finalizarCompra()
   }
 })
+
 
 // AGREGAR NUMERO DE CANTIDADES AL ICONO CARRITO EN NAVBAR
 const carritoContador = () => {
   agregarCantidadIcono.innerHTML = carrito.length;
-}
-
-
-//FINALIZAR COMPRA (PROBANDO)
-function finalizarCompra() {
-  carrito.forEach((producto) => {
-    const listaCompra = document.querySelector('#lista-compra tbody');
-    const row = document.createElement('tr');
-    const { nombre, precio, cantidad, img } = producto;
-    row.innerHTML += `
-    <td>
-      <img src="${img}">
-    </td>
-    <td>${nombre}</td>
-    <td>${precio}</td>
-    <td>${cantidad}</td>`;
-    listaCompra.appendchild(row);
-  })
-
 }
 
 //GUARDAR DATOS EN LOCAL STORAGE
