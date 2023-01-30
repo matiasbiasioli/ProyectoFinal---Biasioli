@@ -1,5 +1,5 @@
 //HOLA PROFE, PUDE RESOLVER LA CARGA DEL FETCH IGUALANDO en la funcion fetchAPI EL NOMBRE QUE LE HABIA PUESTO AL ARRAY = DATA Y ENTONCES USÉ el stockProductos COMO PARAMETRO! GRACIAS!
-//Como te digo en el ultimo mensaje, lo que no estoy pudiendo lograr todavía es cargar en el compra.html los productos seleccionados en la tabla del formulario para finalizarCompra. 
+//Como te digo en el ultimo mensaje, lo que no estoy pudiendo lograr todavía es cargar en el compra.html los productos seleccionados en la tabla del formulario para finalizarCompra sin que se me muestren todos los productos a la vez. 
 //Tengo alguna forma desde donde estoy trabado? u otra?
 
 let carrito = []
