@@ -1,39 +1,9 @@
-let carrito = []
+
 let stockProductos = []
 const sumaDePrecio = document.getElementById('precioTotal');
 const agregarCantidadIcono = document.querySelector('#cantidadCarrito');
-const activarFuncion = document.querySelector('#activarFuncion');
-const listaCompra = document.querySelector('#lista-compra tbody');
 
-if (activarFuncion === true) {
-  activarFuncion.addEventListener('click', finalizarCompra)
-}
-
-//FINALIZAR COMPRA FORMULARIO (PROBANDO)
-function finalizarCompra() {
-  const listaCompra = document.querySelector('#lista-compra tbody');
-  carrito.forEach((producto) => {
-    const { id, nombre, precio, cantidad, img } = producto
-    listaCompra.innerHTML += `
-        <td>
-          <img class="img-fluid img-carrito" src="${img}">
-        </td>
-        <td>${nombre}</td>
-        <td>${precio}</td>
-        <td>${cantidad}</td>
-        <td>${precio * producto.cantidad}</td>`
-  })
-}
-
-async function fetchAPI2() {
-  const response = await fetch('../data/data.json')
-  const data2 = await response.json();
-  carrito = data2
-  finalizarCompra(carrito)
-}
-
-fetchAPI2()
-
+//FUNCION PARA SUMAR PRODUCTOS AL CARRITO
 function agregarProducto(id) {
   const cantidadProducto = carrito.some((producto) => producto.id === id)
   if (cantidadProducto) {
@@ -48,7 +18,35 @@ function agregarProducto(id) {
   }
   mostrarCarrito();
   carritoContador();
+  
 }
+
+
+//FINALIZAR COMPRA FORMULARIO (PROBANDO)
+function finalizarCompra() {
+  const listaCompra = document.querySelector('#lista-compra tbody');
+  carrito.forEach((producto) => {
+    const { id, nombre, precio, cantidad, img } = producto
+    listaCompra.innerHTML += `
+        <td>
+          <img class="img-fluid img-carrito" src="${img}">
+        </td>
+        <td>${nombre}</td>
+        <td>${precio}</td>
+        <td>${cantidad}</td>
+        <td>${precio * cantidad}</td>
+        <td>${precio * cantidad}</td>`
+  })
+}
+
+async function fetchAPI2() {
+  const response = await fetch('../data/data.json')
+  const data2 = await response.json();
+  carrito = data2
+  finalizarCompra(carrito)
+}
+
+fetchAPI2()
 
 //FUNCION PARA MOSTRAR LOS PRODUCTOS EN EL CARRITO
 function mostrarCarrito() {
@@ -74,14 +72,6 @@ function mostrarCarrito() {
   }
   //Método para sumar el total del precio
   sumaDePrecio.innerText = carrito.reduce((acc, producto) => acc + producto.cantidad * producto.precio, 0)
-
-  guardarStorage()
-}
-
-
-//GUARDAR DATOS EN LOCAL STORAGE
-function guardarStorage() {
-  localStorage.setItem("carrito", JSON.stringify(carrito))
 }
 
 const carritoContador = () => {
@@ -90,7 +80,7 @@ const carritoContador = () => {
 
 document.addEventListener('DOMContentLoaded', () => {
   carrito = JSON.parse(localStorage.getItem('carrito')) || []
-  document.querySelector('#activarFuncion').click(finalizarCompra)
   mostrarCarrito();
   carritoContador();
+  finalizarCompra()
 })
